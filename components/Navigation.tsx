@@ -5,6 +5,7 @@ import { Button, buttonVariants } from './ui/Button'
 import ModeToggle from './ModeToggle'
 import Icons from './Icons'
 import { cn } from '@/lib/utils'
+// import { ConnectButton } from '@rainbow-me/rainbowkit'
 import ConnectWallet from './ConnectWallet'
 
 const Navigation = () => {
@@ -35,6 +36,7 @@ const Navigation = () => {
             <ModeToggle />
 
             {/* Connect Wallet */}
+            {/* <ConnectButton /> */}
             <ConnectWallet />
         </div>
     </nav>

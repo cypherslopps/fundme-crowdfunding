@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import { ThemeProvider } from "./ThemeProvider"
+import WalletConnectProvider from "./WalletConnectProvider";
 
 gsap.registerPlugin(useGSAP);
 
@@ -14,14 +15,16 @@ interface IProviders {
 
 const Providers: FC<IProviders> = ({ children }) => {
     return (
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-        >
-            {children}
-        </ThemeProvider>
+        // <WalletConnectProvider>
+            <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+            >
+                {children}
+            </ThemeProvider>
+        // </WalletConnectProvider>
     )
 }
 
