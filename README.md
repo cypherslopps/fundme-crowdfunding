@@ -8,3 +8,6 @@
 - Shadncn
 - Rainbowkit for Wallet Connect
 - Tailwindcss
+- Filepond for Image Upload
+- UUID for generating random generic IDs
+- Firebase for storing images
