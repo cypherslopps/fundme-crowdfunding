@@ -1,7 +1,8 @@
-import { Plus } from "lucide-react";
+import { Heart, Plus } from "lucide-react";
 
 const Icons = {
-    plus: Plus
+    plus: Plus,
+    heart: Heart
 }
 
 export default Icons;

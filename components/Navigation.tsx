@@ -10,7 +10,7 @@ import ConnectWallet from './ConnectWallet'
 
 const Navigation = () => {
   return (
-    <nav className="bg-zinc-950 border-b border-zinc-800 flex items-center justify-between px-5 py-2.5 fixed top-0 left-0 w-full">
+    <nav className="bg-zinc-950 border-b border-zinc-800 flex items-center justify-between px-5 py-2.5 fixed top-0 left-0 w-full z-50 backdrop-blur-lg">
         <Link 
             href="/"
             className="text-2xl font-extrabold font-mono"

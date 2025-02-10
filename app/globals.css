@@ -12,6 +12,12 @@
   --foreground: #f2f4f6;
 }
 
+@layer utilities {
+  .heading {
+    @apply text-2xl font-semibold;
+  }
+}
+
 @layer base {
   :root {
     --radius: 0.5rem;
@@ -21,5 +27,9 @@
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--background);
     color: var(--foreground)
+  }
+
+  .clip-poly {
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
   }
 }

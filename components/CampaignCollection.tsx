@@ -1,29 +1,17 @@
 import React from 'react'
+import CampaignCollectionItem from './CampaignCollectionItem';
 
 const CampaignCollection = () => {
   return (
-    <section className="grid gap-y-3">
+    <section className="grid gap-y-5">
       <header className="flex items-center justify-between">
         <div>Content 1</div>
         <div>Content 2</div>
       </header>
 
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 xm:grid-cols-3 slg:grid-cols-4 lg:grid-cols-5 gap-3 slg:gap-6">
         {Array.from({ length: 15 }).map((_, idx) => (
-          <blockquote 
-            key={idx}
-            className="rounded-lg bg-gray-900/50 border border-gray-500/20 h-80 grid grid-rows-[40%_1fr] p-3 gap-y-2.5"
-          >
-            <figure>
-              <img 
-                src="https://placehold.co/600x400/FFFFFF/000000.png"
-                className="size-full object-cover rounded-lg"
-              />
-            </figure>
-
-            {/* Content */}
-            <div>Content</div>
-          </blockquote>
+          <CampaignCollectionItem key={idx} />
         ))}
       </div>
     </section>
