@@ -1,29 +1,47 @@
-import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { FC, ReactNode } from 'react';
-import { WagmiProvider } from "wagmi";
-import { sepolia } from 'wagmi/chains';
+import { ReactNode, FC } from "react";
+import { createAppKit } from '@reown/appkit/react'
 
-export const config = getDefaultConfig({
-  appName: 'FundMe',
-  projectId: 'YOUR_PROJECT_ID',
-  chains: [sepolia],
-  ssr: true,
+import { WagmiProvider } from 'wagmi'
+import { AppKitNetwork, sepolia } from '@reown/appkit/networks'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
+
+const queryClient = new QueryClient();
+const projectID = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? "";
+
+const metadata = {
+  name: 'fundme',
+  description: 'Crownfunding DAPP',
+  url: 'https://reown.com/appkit', // origin must match your domain & subdomain
+  icons: ['https://assets.reown.com/reown-profile-pic.png']
+}
+
+// 4. Create Wagmi Adapter
+const wagmiAdapter = new WagmiAdapter({
+  networks: [sepolia],
+  projectId: projectID,
+  ssr: true
 });
+
+createAppKit({
+  adapters: [wagmiAdapter],
+  networks: [sepolia],
+  projectId: projectID,
+  metadata,
+  features: {
+    analytics: true
+  }
+})
 
 interface IWalletConnectProvider {
     children: ReactNode
 }
 
-const queryClient = new QueryClient();
-
 const WalletConnectProvider: FC<IWalletConnectProvider> = ({ children }) => {
   return (
-    <WagmiProvider config={config}>
+    <WagmiProvider config={wagmiAdapter.wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
-          {children}
-        </RainbowKitProvider>
+        {children}
       </QueryClientProvider>
     </WagmiProvider>
   )

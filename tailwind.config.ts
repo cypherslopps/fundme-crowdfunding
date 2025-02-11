@@ -22,7 +22,8 @@ export default {
   	extend: {
   		colors: {
   			background: 'var(--background)',
-  			foreground: 'var(--foreground)'
+  			foreground: 'var(--foreground)',
+			error: "#ff4761"
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

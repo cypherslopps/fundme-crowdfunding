@@ -14,7 +14,7 @@
 
 @layer utilities {
   .heading {
-    @apply text-2xl font-semibold;
+    @apply text-[22px] text-center msm:text-justify msm:text-2xl font-semibold;
   }
 }
 
@@ -33,8 +33,27 @@
     clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
   }
 
+  .filepond_wrap {
+    margin-bottom: 0 !important;
+  }
+
   .filepond_wrap .filepond--drip {
     background: #18181b !important;
     opacity: 1;
+  }
+
+  .filepond_wrap .filepond--credits {
+    display: none !important;
+    opacity: 0;
+  }
+
+  .filepond_wrap .filepond--drop-label.filepond--drop-label label {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .filepond_wrap .filepond--drop-label.filepond--drop-label label {
+      font-size: 14px;
+    }
   }
 }

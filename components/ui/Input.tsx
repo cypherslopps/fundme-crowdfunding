@@ -18,12 +18,16 @@ const Input = React.forwardRef<HTMLInputElement,InputProps>(
         <input
           type={type}
           className={cn(
-            "flex h-12 w-full bg-zinc-900 rounded-md border border-zinc-200 px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-zinc-950 placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:border-zinc-800 dark:file:text-zinc-50 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300",
-            className
+            "flex h-12 w-full bg-zinc-900 rounded-md border border-zinc-200 px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-zinc-950 placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:border-zinc-800 dark:file:text-zinc-50 dark:placeholder:text-zinc-400 dark:focus-visible:ring-blue-500/80",
+            className,
+            error ? "border-error dark:border-error dark:focus-visible:ring-transparent focus-visible:ring-transparent" : ""
           )}
           ref={ref}
           {...props}
         />
+        {error && (
+          <span className="text-xs sm:text-sm text-error">{error}</span>
+        )}
       </div>
     )
   }

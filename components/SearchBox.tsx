@@ -8,7 +8,7 @@ const SearchBox = () => {
   console.log(query);
 
   return (
-    <div className="w-1/2 h-11">
+    <div className="w-1/2 h-11 hidden mlg:flex">
       <input 
         type="search"
         placeholder="Search Campaigns"

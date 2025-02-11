@@ -3,8 +3,12 @@ import React from 'react'
 type Props = {}
 
 const ConnectWallet = (props: Props) => {
+
   return (
-    <div>ConnectWallet</div>
+    <>
+      {/* @ts-expect-error msg */}
+      <appkit-button />
+    </>
   )
 }
 

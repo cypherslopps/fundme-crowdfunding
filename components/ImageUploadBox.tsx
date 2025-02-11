@@ -31,10 +31,11 @@ interface ServerProps {
 }
 
 interface ImageUploadBoxProps {
-    setImage: (source: string) => void
+    label: string;
+    setImage: (source: string) => void;
 }
 
-const ImageUploadBox: FC<ImageUploadBoxProps> = ({ setImage }) => {
+const ImageUploadBox: FC<ImageUploadBoxProps> = ({ label, setImage }) => {
     const [files, setFiles] = useState<FilePondFile[]>([]);
 
     const handleServer: ServerProps['process'] = async (
@@ -107,7 +108,11 @@ const ImageUploadBox: FC<ImageUploadBoxProps> = ({ setImage }) => {
     }
 
     return (
-        <>
+        <div
+            role="group"
+            className="flex flex-col gap-y-1.5"
+        >
+            <label className="text-sm text-white/60 font-medium">{label}</label>
             <FilePond
                 files={(files as unknown) as FilePondInitialFile[]}
                 onupdatefiles={setFiles}
@@ -118,7 +123,7 @@ const ImageUploadBox: FC<ImageUploadBoxProps> = ({ setImage }) => {
                 labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
                 className="filepond_wrap"
             />
-        </>
+        </div>
     )
 }
 
