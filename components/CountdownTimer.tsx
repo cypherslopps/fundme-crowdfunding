@@ -2,9 +2,9 @@
 
 import React from 'react'
 import { debounce } from "lodash";
-import { calculateTimeRemaining } from "@/lib/utils";
+import { calculateTimeRemaining, cn } from "@/lib/utils";
 
-const CountdownTimer = () => {
+const CountdownTimer: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, ...props }) => {
     const targetDate = new Date("14 Feb, 2025");
     const [timeRemaining, setTimeRemaining] = React.useState(calculateTimeRemaining(targetDate));
 
@@ -24,13 +24,16 @@ const CountdownTimer = () => {
     }, [debouncedSetTimeRemaining, targetDate]);
 
   return (
-    <div className='inline-flex text-[13px] gap-x-1 text-[#0a63f5] font-semibold'>
-      <span>{timeRemaining.days} Days</span>
+    <div 
+      className={cn('inline-flex items-center text-[13px] gap-x-1 text-[#0a63f5] font-semibold', className)}
+      {...props}
+    >
+      <span>{timeRemaining.days} Day{timeRemaining.days > 1 ? "s" : ""}</span>
       
       <div>
-        <span>{timeRemaining.hours}H:</span>
-        <span>{timeRemaining.minutes}M:</span>
-        <span>{timeRemaining.seconds}S</span>
+        <span>{timeRemaining.hours}h:</span>
+        <span>{timeRemaining.minutes}m:</span>
+        <span>{timeRemaining.seconds}s</span>
       </div>
     </div>
   )

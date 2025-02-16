@@ -2,34 +2,48 @@ import WishlistButton from './WishlistButton'
 import Link from 'next/link'
 import CountdownTimer from './CountdownTimer'
 import { cn } from '@/lib/utils'
-import { buttonVariants } from './ui/Button'
+import { buttonVariants } from './ui/Button';
+import { FC } from 'react';
+
+interface CampaignItemProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+  progress: number;
+}
+
+export const CampaignItemProgress: FC<CampaignItemProgressProps> = ({ progress, className }) => {
+  return (
+    <div className={cn("h-2 w-full rounded-full bg-gray-800/70", className)}>
+      <div 
+        className="h-full bg-gradient-to-tr from-blue-500 to-emerald-500 rounded-full relative scale-[1.02] select-none"
+        style={{ width: `${progress}%` }}
+      >
+        {/* Stat */}
+        <div className="absolute top-1/2 -right-1 py-[1.5px] -translate-y-1/2 w-[2.8rem] bg-gradient-to-tr from-blue-500 to-emerald-500 flex items-center justify-center rounded-tr-[2rem] rounded-br-[2rem] rounded-lg text-xs font-bold border border-gray-900 text-gray-900">
+          {progress}%
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const CampaignCollectionItem = () => {
     return (
       <blockquote
-        className="rounded-lg bg-gray-900/50 border border-gray-500/20 grid grid-rows-[40%_1fr] px-2 slg:p-3 gap-y-2.5"
+        className="h-fit rounded-lg bg-gray-900/50 border border-gray-500/20 grid grid-rows-[6rem_1fr] px-2 slg:p-3 gap-y-2.5"
       >
-        <figure>
+        <figure className='size-full bg-white/60 rounded-lg overflow-hidden'>
           <img 
             src="https://placehold.co/600x400/FFFFFF/000000.png"
-            className="size-full object-cover rounded-lg"
+            className="size-full object-cover"
           />
         </figure>
   
         {/* Content */}
-        <div className="grid gap-y-0.5 slg:gap-y-1">
+        <div className="grid gap-y-1.5 slg:gap-y-2.5">
           <header className="space-y-2 slg:space-y-2.5">
             <h3 className="text-base slg:text-lg font-semibold text-ellipsis whitespace-nowrap overflow-hidden">Fundraiser Text3</h3>
   
             {/* Progress */}
-            <div className="h-2 w-full rounded-full bg-gray-800/70">
-              <div className="w-1/2 h-full bg-gradient-to-tr from-blue-500 to-emerald-500 rounded-full relative">
-                {/* Stat */}
-                <div className="absolute top-1/2 -right-1 py-[1.5px] -translate-y-1/2 w-[37%] bg-gradient-to-tr from-blue-500 to-emerald-500 flex items-center justify-center rounded-tr-[2rem] rounded-br-[2rem] rounded-lg text-xs font-bold">
-                  50%
-                </div>
-              </div>
-            </div>
+            <CampaignItemProgress progress={50} />
           </header>
   
           {/* Stats */}

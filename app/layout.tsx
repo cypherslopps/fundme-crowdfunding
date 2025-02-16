@@ -33,7 +33,7 @@ export default function RootLayout({
         <Navigation />
 
         <Providers>
-          <main className="mt-24 px-1.5 msm:px-3 md:px-4 lg:px-8">
+          <main className="mt-24 mb-6 px-1.5 msm:px-3 md:px-4 lg:px-8">
             {children}
           </main>
         </Providers>
