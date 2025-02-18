@@ -1,24 +1,37 @@
-import React from 'react';
+import React, { FC } from 'react';
+import Link from 'next/link';
 
 import CircularProgressBar from '@/components/CircularProgressBar';
 import CountdownTimer from '@/components/CountdownTimer'
 import { Button } from '@/components/ui/Button';
 import DonationsCollection from '@/components/DonationsCollection';
+import Icons from '@/components/Icons';
+import DonateModal from '@/components/DonateModal';
 
-const CampaignDetail = () => {
+interface ICampaignDetail {
+  params: { 
+    slug: string 
+  };
+}
+
+const CampaignDetail: FC<ICampaignDetail> = ({ params }) => {
+  const slug = params.slug ?? "";
+
   return (
     <main className="space-y-9">
       <figure className="w-full h-[55vh] rounded-2xl overflow-hidden">
         <img 
           src="https://placehold.co/600x400/FFFFFF/000000.png"
-          className="size-full object-cover"
+          className="size-full object-cover cursor-pointer transition-transform duration-500 hover:scale-105"
         />
       </figure>
 
       <section className='space-y-6'>
         <header className="space-y-1.5">
           <div className="space-y-1.5">
-            <h1 className="text-2xl flex-1 font-bold">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h1>
+            <h1 className="text-2xl flex-1 font-bold">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            </h1>
             <p className='text-gray-300/90 text-base'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam numquam commodi officia quia fuga est itaque perferendis accusamus autem! Dignissimos, at magnam officia cum alias nisi expedita possimus quis ipsa.
             Quas accusantium odit, cumque qui assumenda, facilis voluptatem ea at nulla est architecto perspiciatis ad voluptatum corrupti. Voluptas, quam perspiciatis odit facilis blanditiis, provident reiciendis ex minima architecto animi esse.
             Dolorum, sed consectetur autem voluptatibus, voluptates perferendis sapiente eos saepe dignissimos velit, eum repellat ab culpa molestias iure. Debitis rem aspernatur minus illo eligendi aliquam ex odit beatae suscipit facere?</p>
@@ -27,7 +40,9 @@ const CampaignDetail = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-x-2">
               <CountdownTimer className="text-base h-9 font-medium bg-blue-500/10 text-blue-700 px-2 py-0.5 rounded-lg gap-x-1.5" />
-              <Button className='text-base font-semibold px-8'>$ Donate</Button>
+              
+              {/* Donate Modal Trigger */}
+              <DonateModal />
             </div>
 
             {/* Campaign Progress */}
@@ -70,7 +85,7 @@ const CampaignDetail = () => {
       </section>
 
       {/* Donations */}
-      <section className="space-y-4">
+      <section className="space-y-5">
         <h1 className="text-2xl font-bold border-b-8 border-red-400 inline-block">Donations</h1>
 
         {/* Donations Collection */}

@@ -1,20 +1,12 @@
 "use client"
 
-// import { useRouter } from "next/navigation"
 import { useState } from "react";
 import { useFormik } from "formik";
-import { addDays } from 'date-fns';
-import { DateRange } from 'react-day-picker';
 import { campaignFormSchema } from "@/lib/schemas";
 
-const useCampaignForm = () => {
+const useDonateForm = () => {
     // const router = useRouter();
     const [isLoading] = useState(false);
-    const [date, setDate] = useState<DateRange | undefined>({
-      from: new Date(),
-      to: addDays(new Date(), 20),
-    });
-    const [imageSource, setImageSource] = useState("");
 
     const formik = useFormik({
         initialValues: {
@@ -33,11 +25,7 @@ const useCampaignForm = () => {
         formik,
         isLoading,
         isValid,
-        date,
-        setDate,
-        imageSource,
-        setImageSource
     }
 }
 
-export default useCampaignForm;
+export default useDonateForm;

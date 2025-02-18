@@ -27,9 +27,7 @@ export const CampaignItemProgress: FC<CampaignItemProgressProps> = ({ progress, 
 
 const CampaignCollectionItem = () => {
     return (
-      <blockquote
-        className="h-fit rounded-lg bg-gray-900/50 border border-gray-500/20 grid grid-rows-[6rem_1fr] px-2 slg:p-3 gap-y-2.5"
-      >
+      <blockquote className="h-fit rounded-lg bg-gray-900/50 border border-gray-500/20 grid grid-rows-[6rem_1fr] px-2 slg:p-3 gap-y-2.5">
         <figure className='size-full bg-white/60 rounded-lg overflow-hidden'>
           <img 
             src="https://placehold.co/600x400/FFFFFF/000000.png"
@@ -65,7 +63,7 @@ const CampaignCollectionItem = () => {
           </div>
   
           <div className="flex items-center justify-between gap-x-3 py-2 slg:pt-1 slg:pb-0">
-            <CountdownTimer />
+            <CountdownTimer className="text-emerald-500" />
             
             <div className="flex items-center gap-x-1.5">
               {/* Wishlist Button */}
