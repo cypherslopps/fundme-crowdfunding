@@ -6,6 +6,7 @@ import CampaignCollection from "@/components/CampaignCollection";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import UserCampaigns from "@/components/UserCampaigns";
+import Tab from "@/components/ui/Tab";
 
 const tabs = ["all campaigns", "your campaigns"];
 
@@ -15,19 +16,7 @@ export default function Home() {
   return (
     <main className="space-y-12">
       {/* Tabs */}
-      <header className="flex items-center gap-x-6 bg-red-300 rounded-xl w-max">
-        {tabs.map(tab => (
-          <Button
-            key={tab}
-            variant="transparent"
-            size="none"
-            className={cn("text-base capitalize border-b-4 py-1 rounded-none", activeTab === tab ? "font-bold border-emerald-400" : "border-transparent")}
-            onClick={() => setActiveTab(tab)}
-          >
-            {tab}
-          </Button>
-        ))}  
-      </header>    
+      <Tab tabs={tabs} />
 
       {/* Campaign Collection */}
       {/* {activeTab === "all campaigns" && (
