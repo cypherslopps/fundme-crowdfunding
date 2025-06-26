@@ -2,7 +2,7 @@ import { ReactNode, FC } from "react";
 import { createAppKit } from '@reown/appkit/react'
 
 import { WagmiProvider } from 'wagmi'
-import { AppKitNetwork, sepolia } from '@reown/appkit/networks'
+import { sepolia } from '@reown/appkit/networks'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
 

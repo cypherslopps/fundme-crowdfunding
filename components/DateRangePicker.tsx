@@ -34,29 +34,29 @@ function DateRangePicker({
         <label className="text-sm text-white/60 font-medium">{label}</label>
         <Popover>
             <PopoverTrigger className="w-full" asChild>
-            <Button
-                id="date"
-                width="full"
-                variant={"outline"}
-                className={cn(
-                "h-12 justify-start text-left font-normal",
-                !date && "text-muted-foreground"
-                )}
-            >
-                <CalendarIcon />
-                {date?.from ? (
-                date.to ? (
-                    <>
-                    {format(date.from, "LLL dd, y")} -{" "}
-                    {format(date.to, "LLL dd, y")}
-                    </>
-                ) : (
-                    format(date.from, "LLL dd, y")
-                )
-                ) : (
-                <span>Pick a date</span>
-                )}
-            </Button>
+                <Button
+                    id="date"
+                    width="full"
+                    variant={"outline"}
+                    className={cn(
+                    "h-12 justify-start text-left font-normal",
+                    !date && "text-muted-foreground"
+                    )}
+                >
+                    <CalendarIcon />
+                    {date?.from ? (
+                    date.to ? (
+                        <>
+                        {format(date.from, "LLL dd, y")} -{" "}
+                        {format(date.to, "LLL dd, y")}
+                        </>
+                    ) : (
+                        format(date.from, "LLL dd, y")
+                    )
+                    ) : (
+                    <span>Pick a date</span>
+                    )}
+                </Button>
             </PopoverTrigger>
             
             <PopoverContent className="w-full p-0" align="start">

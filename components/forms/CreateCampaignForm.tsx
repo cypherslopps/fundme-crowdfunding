@@ -3,7 +3,7 @@
 import React from 'react'
 
 import { Input } from '../ui/Input'
-import { Textarea } from '../ui/textarea'
+import { Textarea } from '../ui/Textarea'
 import ImageUploadBox from '../ImageUploadBox'
 import { Button } from '../ui/Button';
 import DateRangePicker from '../DateRangePicker';

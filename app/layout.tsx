@@ -1,23 +1,26 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Metadata } from "next";
+import { Barlow_Condensed, Bebas_Neue } from 'next/font/google'
+
 import "./globals.css";
 import Providers from "@/providers/Providers";
 import Navigation from "@/components/Navigation";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
+  weight: "400",
+  variable: "--font-barlow"
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bebas"
 });
 
 export const metadata: Metadata = {
-  title: "FundMe",
-  description: "Crownfunding DApp",
-};
+  title: "FundME",
+  description: "Crowdfunding DApp",
+}
 
 export default function RootLayout({
   children,
@@ -27,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`antialiased ${barlowCondensed.variable} ${bebasNeue.variable}`}
       >
         {/* Navigation */}
         <Navigation />

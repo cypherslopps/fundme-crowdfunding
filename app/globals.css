@@ -2,12 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-[class="light"] {
-  --background: #ffffff;
-  --foreground: #0d0e0f;
-}
-
-[class="dark"] {
+:root {
   --background: #0d0e0f;
   --foreground: #f2f4f6;
 }
@@ -80,6 +75,10 @@
   .svg-pi-label__loading,
   .svg-pi-label__progress {
     display: block;
+  }
+
+  .nav-a button[data-size="md"] {
+    background: #17eeaa !important;
   }
   
   /* Spinner animation */

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
 import { FilePond, registerPlugin } from 'react-filepond'
 
@@ -12,6 +12,7 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
 import { FilePondFile, FilePondInitialFile } from 'filepond'
 import { nanoid } from "nanoid";
 import supabase from '@/services/supabase';
+import Icons from './Icons';
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
@@ -37,6 +38,13 @@ interface ImageUploadBoxProps {
 
 const ImageUploadBox: FC<ImageUploadBoxProps> = ({ label, setImage }) => {
     const [files, setFiles] = useState<FilePondFile[]>([]);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+
+        return () => setMounted(false);
+    }, []);
 
     const handleServer: ServerProps['process'] = async (
         fieldName, 
@@ -107,6 +115,12 @@ const ImageUploadBox: FC<ImageUploadBoxProps> = ({ label, setImage }) => {
         }
     }
 
+    if (!mounted) {
+        return <div className="bg-[#18181b] h-24 rounded-md flex items-center justify-center">
+            <Icons.loader className="animate-spin size-5 text-gray-400" />
+        </div>
+    }
+
     return (
         <div
             role="group"
@@ -118,7 +132,7 @@ const ImageUploadBox: FC<ImageUploadBoxProps> = ({ label, setImage }) => {
                 onupdatefiles={setFiles}
                 allowMultiple={false}
                 maxFiles={1}
-                server={{ process: handleServer }}
+                server={{ process: handleServer } as never}
                 name="files"
                 labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
                 className="filepond_wrap"

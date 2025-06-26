@@ -8,6 +8,7 @@ const CountdownTimer: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ classN
     const targetDate = new Date("14 Feb, 2025");
     const [timeRemaining, setTimeRemaining] = React.useState(calculateTimeRemaining(targetDate));
 
+
     const debouncedSetTimeRemaining = React.useCallback(
         debounce(() => {
             setTimeRemaining(calculateTimeRemaining(targetDate));
@@ -25,7 +26,7 @@ const CountdownTimer: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ classN
 
   return (
     <div 
-      className={cn('inline-flex items-center text-[13px] gap-x-1 text-[#0a63f5] font-semibold', className)}
+      className={cn('inline-flex items-center text-[13px] font-medium bg-blue-500/10 text-blue-700 px-2 py-0.5 gap-x-1.5', className)}
       {...props}
     >
       <span>{timeRemaining.days} Day{timeRemaining.days > 1 ? "s" : ""}</span>

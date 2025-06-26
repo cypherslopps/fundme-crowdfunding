@@ -1,11 +1,8 @@
 import React, { FC } from 'react';
-import Link from 'next/link';
 
 import CircularProgressBar from '@/components/CircularProgressBar';
-import CountdownTimer from '@/components/CountdownTimer'
-import { Button } from '@/components/ui/Button';
+import CountdownTimer from '@/components/CountdownTimer';
 import DonationsCollection from '@/components/DonationsCollection';
-import Icons from '@/components/Icons';
 import DonateModal from '@/components/DonateModal';
 
 interface ICampaignDetail {
@@ -39,7 +36,7 @@ const CampaignDetail: FC<ICampaignDetail> = ({ params }) => {
           
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-x-2">
-              <CountdownTimer className="text-base h-9 font-medium bg-blue-500/10 text-blue-700 px-2 py-0.5 rounded-lg gap-x-1.5" />
+              <CountdownTimer className="text-base h-9 rounded-lg" />
               
               {/* Donate Modal Trigger */}
               <DonateModal />

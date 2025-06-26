@@ -30,13 +30,13 @@ const useCampaignForm = () => {
     const isValid = Object.values(formik.errors).every(val => val === "");
 
     return {
-        formik,
-        isLoading,
-        isValid,
-        date,
-        setDate,
-        imageSource,
-        setImageSource
+      formik,
+      isLoading,
+      isValid,
+      date,
+      setDate,
+      imageSource,
+      setImageSource
     }
 }
 
