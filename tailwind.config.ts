@@ -19,7 +19,11 @@ export default {
 		xl: '1280px',
 		'2xl': '1536px'
 	},
-  	extend: {
+	extend: {
+		fontFamily: {
+			bebas: ['var(--font-bebas-neue)', 'sans-serif'],
+			barlow: ['var(--font-barlow-condensed)', 'sans-serif'],
+		},
   		colors: {
   			background: 'var(--background)',
   			foreground: 'var(--foreground)',

@@ -1,9 +1,9 @@
-import WishlistButton from './WishlistButton'
-import Link from 'next/link'
-import CountdownTimer from './CountdownTimer'
+import Image from 'next/image';
+import { FC, useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+
 import { cn } from '@/lib/utils'
-import { buttonVariants } from './ui/Button';
-import { FC } from 'react';
+import CanvasRevealEffect from './ui/CanvasRevealBox';
 
 interface CampaignItemProgressProps extends React.HTMLAttributes<HTMLDivElement> {
   progress: number;
@@ -21,65 +21,99 @@ export const CampaignItemProgress: FC<CampaignItemProgressProps> = ({ progress, 
 }
 
 const CampaignCollectionItem = () => {
-    return (
-      <blockquote className="w-full h-fit rounded-lg bg-gray-900/50 border border-gray-500/20 grid grid-rows-[7rem_1fr] gap-y-2.5 overflow-hidden pb-2 slg:pb-3">
-        <figure className='size-full bg-white/60 overflow-hidden'>
-          <img 
-            src="https://placehold.co/600x400/FFFFFF/000000.png"
-            className="size-full object-cover"
-          />
-        </figure>
-  
-        {/* Content */}
-        <div className="grid gap-y-1.5 slg:gap-y-2.5">
-          <header className="-space-y-1 slg:space-y-1 px-2 slg:px-3">
-            <h3 className="text-base slg:text-[17px] font-semibold text-ellipsis whitespace-nowrap overflow-hidden line-clamp-1">Fundraiser Text3</h3>
-  
-            {/* Progress */}
-            <CampaignItemProgress progress={50} />
-          </header>
-  
-          {/* Stats */}
-          <div className="bg-gray-900/75 grid grid-cols-3 items-center py-2 slg:py-2.5 border-y border-black">
-            <div className="text-center -space-y-0.5">
-              <span className="text-xs slg:text-[13px] opacity-75">Raised</span>
-              <h4 className="text-[.99rem] slg:text-[1.03rem] font-semibold">$5416</h4>
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <blockquote 
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="border border-white/[0.2] group/canvas-card w-full mx-auto relative h-[27rem] grid grid-rows-[75%_1fr] p-1.5 gap-1"
+    >
+      <Icon className="absolute h-6 w-6 -top-3 -left-3 text-white" />
+      <Icon className="absolute h-6 w-6 -bottom-3 -left-3 text-white" />
+      <Icon className="absolute h-6 w-6 -top-3 -right-3 text-white" />
+      <Icon className="absolute h-6 w-6 -bottom-3 -right-3 text-white" />
+ 
+      <figure className="relative overflow-hidden rounded-[.4rem]">
+        <AnimatePresence>
+          {isHovered ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="size-full relative"
+            >
+              <Image 
+                src="/images/img.jpg"
+                alt="alt"
+                fill
+              />
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="h-full"
+            >
+              <CanvasRevealEffect
+                animationSpeed={5.1}
+                containerClassName="bg-black"
+                colors={[
+                  [14, 80, 225],
+                  [54, 14, 225]
+                ]}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </figure>
+ 
+      <div className="relative p-1 space-y-0.5">
+        <header className="-space-y-1.5">
+          <h1 className="font-bebas text-2xl font-extrabold">Campaign Title</h1>
+          <p className="text-[15.5px] text-white/80">Campaign One-liner</p>
+        </header>
+
+        <div>
+          <div className="flex items-center justify-between gap-x-3">
+            <div className="font-bebas flex items-center gap-x-0.5 text-[17px]">
+              <span className="">Obj</span>
+              <span>-</span>
+              <span>$500</span>
             </div>
-  
-            <div className="text-center -space-y-0.5">
-              <span className="text-xs slg:text-[13px] opacity-75">Goal</span>
-              <h4 className="text-[.99rem] slg:text-[1.03rem] font-semibold">$31,512</h4>
-            </div>
-  
-            <div className="text-center -space-y-0.5">
-              <span className="text-xs slg:text-[13px] opacity-75">Left</span>
-              <h4 className="text-[.99rem] slg:text-[1.03rem] font-semibold">$0</h4>
+
+            <div className="font-bebas flex items-center gap-x-0.5 text-[17px]">
+              <span className="">Raised</span>
+              <span>-</span>
+              <span>$500</span>
             </div>
           </div>
-  
-          <div className="flex flex-col gap-y-2 py-2 slg:pt-1 slg:pb-0 px-2 slg:px-3">
-            <div  className="flex items-center justify-between gap-x-1.5">
-              <CountdownTimer className="font-semibold rounded-md" />
 
-              {/* Wishlist Button */}
-              <WishlistButton />
+          {/* Progress */}
+          <div className="w-full h-4 rounded-full bg-gray-800">
+            <div className="w-[40%] h-full rounded-full bg-rose-500 flex items-center justify-end px-1.5">
+              <span className="text-sm leading-none font-extrabold text-black font-bebas mt-0.5">50%</span>
             </div>
-  
-            {/* View Button */}
-            <Link 
-              href="/"
-              className={cn(buttonVariants({ 
-                variant: "default", 
-                size: "default",
-                width: "full" 
-              }))}
-            >
-              View
-            </Link>
           </div>
         </div>
-      </blockquote>
-    )
+      </div>
+    </blockquote>
+  )
 }
+
+export const Icon = ({ className, ...rest }: any) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className={className}
+      {...rest}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+    </svg>
+  );
+};
 
 export default CampaignCollectionItem

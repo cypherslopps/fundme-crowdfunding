@@ -5,16 +5,18 @@ import "./globals.css";
 import Providers from "@/providers/Providers";
 import Navigation from "@/components/Navigation";
 
-const barlowCondensed = Barlow_Condensed({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-barlow"
+export const bebasNeue = Bebas_Neue({
+  weight: ['400'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-bebas-neue',
 });
 
-const bebasNeue = Bebas_Neue({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-bebas"
+export const barlowCondensed = Barlow_Condensed({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-barlow-condensed',
 });
 
 export const metadata: Metadata = {
@@ -30,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`antialiased ${barlowCondensed.variable} ${bebasNeue.variable}`}
+        className={`antialiased ${barlowCondensed.variable} ${bebasNeue.variable} overflow-x-clip`}
       >
         {/* Navigation */}
         <Navigation />

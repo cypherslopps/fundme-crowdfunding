@@ -5,13 +5,18 @@ import { Button } from './Button';
 import { cn } from '@/lib/utils';
 
 interface ITab {
-  tabs: string[]
+  tabs: string[],
+  setActiveTab: (tab: string) => void;
+  activeTab: string;
 }
 
-const Tab = ({ tabs }: ITab) => {
+const Tab = ({ 
+  tabs,
+  activeTab,
+  setActiveTab 
+}: ITab) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const indicatorRef = useRef<HTMLSpanElement | null>(null);
-  const [activeTab, setActiveTab] = useState(tabs[0]);
   
   const isActive = (tab: string) => tab === activeTab;
 
@@ -51,8 +56,8 @@ const Tab = ({ tabs }: ITab) => {
           variant="transparent"
           size="none"
           className={cn(
-            "text-base capitalize py-1 px-3 rounded-none", 
-            isActive(tab) ? "text-black font-bold a-tab" : "text-white/70"
+            "font-bebas text-base capitalize py-1 px-3 rounded-none", 
+            isActive(tab) ? "text-black font-semibold a-tab" : "text-white/70"
           )}
           onClick={() => selectActiveTab(tab)}
         >

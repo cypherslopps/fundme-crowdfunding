@@ -14,7 +14,7 @@ const SearchBox = () => {
         placeholder="Search Campaigns"
         value={query}
         onChange={({ target }) => setQuery(target.value)}
-        className="w-full h-full rounded-md bg-gray-800/50 px-3.5 outline-none border-none placeholder:text-sm placeholder:text-gray-300 text-sm sm:text-base tracking-wide"
+        className="w-full h-full rounded-md bg-black px-3.5 outline-none border border-white/10 placeholder:text-sm placeholder:text-gray-300 text-sm sm:text-base tracking-wide"
       />
     </div>
   )

@@ -3,8 +3,6 @@
 import { useState } from "react";
 
 import CampaignCollection from "@/components/CampaignCollection";
-import { Button } from "@/components/ui/Button";
-import { cn } from "@/lib/utils";
 import UserCampaigns from "@/components/UserCampaigns";
 import Tab from "@/components/ui/Tab";
 
@@ -16,12 +14,16 @@ export default function Home() {
   return (
     <main className="space-y-12">
       {/* Tabs */}
-      <Tab tabs={tabs} />
+      <Tab 
+        tabs={tabs} 
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
 
       {/* Campaign Collection */}
-      {/* {activeTab === "all campaigns" && (
+      {activeTab === "all campaigns" && (
         <CampaignCollection />
-      )} */}
+      )}
 
       {/* Your Campaign Collection */}
       {/* {activeTab === "your campaigns" && (
